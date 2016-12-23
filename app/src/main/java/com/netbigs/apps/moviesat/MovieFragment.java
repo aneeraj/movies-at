@@ -47,8 +47,32 @@ public class MovieFragment extends Fragment {
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent i = new Intent(MovieFragment.this.getActivity(),MovieDetail.class);
-                startActivity(i);
+                Intent i;
+                switch (position){
+
+                    case 0:
+
+                        i = new Intent(MovieFragment.this.getActivity(),MovieDetail.class);
+                        startActivity(i);
+                        break;
+                    case 1:
+                        i = new Intent(MovieFragment.this.getActivity(),MovieDetail.class);
+                        startActivity(i);
+                        break;
+                    case 2:
+                        i = new Intent(MovieFragment.this.getActivity(),MovieDetail.class);
+                        startActivity(i);
+                        break;
+                    case 3:
+                        i = new Intent(MovieFragment.this.getActivity(),MovieDetail.class);
+                        startActivity(i);
+                        break;
+
+
+
+                }
+
+
             }
         });
 
