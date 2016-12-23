@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_movie_detail"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:background="@drawable/bg"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.netbigs.apps.moviesat.MovieDetail">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/mo"
+        android:id="@+id/imageView"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp" />
+
+
+    <TextView
+        android:text="Movie Name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2"
+        android:layout_below="@+id/imageView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="22dp"
+        android:textColor="@color/colorBg"
+        android:textSize="16sp"
+        android:textStyle="normal|bold" />
+
+    <TextView
+        android:text="Release Date: "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView3"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/colorBg"
+        android:layout_below="@+id/textView2"
+        android:layout_centerHorizontal="true" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:gravity="bottom"
+        app:fabSize="mini"
+        app:srcCompat="@drawable/flot"
+        android:id="@+id/floatingActionButton"
+        app:backgroundTint="@android:color/holo_orange_light"
+        android:layout_marginStart="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/imageView" />
+
+    <TextView
+        android:text="Ore Mukham is a 2016 Indian Malayalam-language film directed by Sajith Jagadnandan. It stars Dhyan Sreenivasan, Prayaga Martin, and Gayathri Suresh. Set in the 1980s, the film narrates a college story. Ore Mukham released on 2 December 2016."
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView4"
+        android:layout_below="@+id/textView3"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/colorBg"
+        android:textAlignment="center" />
+
+    <TableLayout
+        android:layout_height="100dp"
+        android:layout_width="300dp"
+        android:layout_above="@+id/floatingActionButton"
+        android:layout_centerHorizontal="true">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </TableLayout>
+
+
+</RelativeLayout>

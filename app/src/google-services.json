@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "801999096492",
+    "firebase_url": "https://moviesat-42f9a.firebaseio.com",
+    "project_id": "moviesat-42f9a",
+    "storage_bucket": "moviesat-42f9a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:801999096492:android:1dcc3e64ab16ef1d",
+        "android_client_info": {
+          "package_name": "com.netbigs.apps.moviesat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "801999096492-9sq4ngki976ghbp2f9ngibcvaj9qb5u0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.netbigs.apps.moviesat",
+            "certificate_hash": "DA39A3EE5E6B4B0D3255BFEF95601890AFD80709"
+          }
+        },
+        {
+          "client_id": "801999096492-7crodos5pvd2tlb8eu21sj2o6s4ted2s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6Zi9OuyBmp8GTnQRDjMVgD1cbNbXTgeM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "801999096492-7crodos5pvd2tlb8eu21sj2o6s4ted2s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
