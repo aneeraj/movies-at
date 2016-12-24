@@ -1,9 +1,12 @@
 package com.netbigs.apps.moviesat;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
@@ -25,7 +28,12 @@ public class MovieDetail extends Activity {
 
     public static final String showUrl = "http://netbigs.com/apps/fetch.php";
     String myJSON;
-    TextView []tv= new TextView[10];
+    String mvname;
+    String mvinfo;
+    String rdate,imglink;
+    ImageView imageView;
+    Bitmap myBitmap;
+    URL urii;
 
     private static final String TAG_RESULTS = "result";
     private static final String TAG_ID = "mvid";
@@ -43,9 +51,8 @@ public class MovieDetail extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_detail);
-        TextView tv0 = (TextView)findViewById(R.id.tvmvname);
-        TextView tv1 = (TextView)findViewById(R.id.tvmvdate);
-        TextView tv2 = (TextView)findViewById(R.id.tvmvinfo);
+
+
         getData();
 
     }
@@ -60,28 +67,34 @@ public class MovieDetail extends Activity {
             for (int i=0;i<movies.length();i++){
                 JSONObject c = movies.getJSONObject(i);
                 String mvid = c.getString(TAG_ID);
-                String mvname = c.getString(TAG_NAME);
-                System.out.println(TAG_NAME);
-                String imglink = c.getString(TAG_IMG);
-                String rdate = c.getString(TAG_DATE);
-                String mvinfo = c.getString(TAG_MOVINF);
+                mvname = c.getString(TAG_NAME);
 
-               HashMap<String,String> movies = new HashMap<String,String>();
-                movies.put(TAG_ID,mvid);
-                movies.put(TAG_NAME,mvname);
-                movies.put(TAG_IMG,imglink);
-                movies.put(TAG_DATE,rdate);
-                movies.put(TAG_MOVINF,mvinfo);
+                imglink = c.getString(TAG_IMG);
+                System.out.println(imglink);
+                rdate = c.getString(TAG_DATE);
+                mvinfo = c.getString(TAG_MOVINF);
+             try {
+                 urii = new URL(imglink);
+                 InputStream in = new java.net.URL(imglink).openStream();
 
-                movieList.add(movies);
+                 myBitmap = BitmapFactory.decodeStream(in);
 
-
+             }
+catch (Exception e){
+    e.printStackTrace();
+}
             }
-            for(int j=0;j<movieList.size();j++){
-          tv[j].setText((CharSequence) movieList.get(j));
+            imageView = (ImageView)findViewById(R.id.imageView);
+            imageView.setImageBitmap(myBitmap);
+            TextView tvname = (TextView)findViewById(R.id.tvmvname);
+            TextView tvdate = (TextView)findViewById(R.id.tvmvdate);
+            TextView tvinfo = (TextView)findViewById(R.id.tvmvinfo);
+            tvname.setText(mvname);
+            tvdate.setText(rdate);
+            tvinfo.setText(mvinfo);
 
 
-        }}
+        }
         catch (JSONException e){
             e.printStackTrace();
         }
