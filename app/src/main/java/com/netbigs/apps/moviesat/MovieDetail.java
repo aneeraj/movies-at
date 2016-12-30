@@ -11,6 +11,8 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -75,17 +77,20 @@ public class MovieDetail extends Activity {
                 mvinfo = c.getString(TAG_MOVINF);
              try {
                  urii = new URL(imglink);
-                 InputStream in = new java.net.URL(imglink).openStream();
-
+                 HttpURLConnection connection = (HttpURLConnection) urii.openConnection();
+                 connection.setDoInput(true);
+                 connection.connect();
+                 InputStream in = connection.getInputStream();
                  myBitmap = BitmapFactory.decodeStream(in);
+
 
              }
 catch (Exception e){
     e.printStackTrace();
 }
             }
-            imageView = (ImageView)findViewById(R.id.imageView);
-            imageView.setImageBitmap(myBitmap);
+            imageView = (ImageView)findViewById(R.id.imView);
+            Picasso.with(this).load(imglink).into(imageView);
             TextView tvname = (TextView)findViewById(R.id.tvmvname);
             TextView tvdate = (TextView)findViewById(R.id.tvmvdate);
             TextView tvinfo = (TextView)findViewById(R.id.tvmvinfo);

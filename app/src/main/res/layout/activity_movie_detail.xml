@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_movie_detail"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:background="@drawable/bg"
@@ -12,48 +17,26 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.netbigs.apps.moviesat.MovieDetail">
 
+
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imageView"
+        android:id="@+id/imView"
         android:layout_alignParentTop="true"
         android:adjustViewBounds="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="8dp" />
 
 
-    <android.support.design.widget.FloatingActionButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:gravity="bottom"
-        app:fabSize="mini"
-        app:srcCompat="@drawable/flot"
-        android:id="@+id/floatingActionButton"
-        app:backgroundTint="@android:color/holo_orange_light"
-        android:layout_marginStart="10dp"
-        android:layout_alignParentBottom="true"
-        android:layout_toEndOf="@+id/imageView" />
-
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tvmvinfo"
         android:textColor="@color/colorBg"
         android:textAlignment="center"
-        android:layout_marginBottom="89dp"
-        android:layout_above="@+id/floatingActionButton"
-        android:layout_alignParentEnd="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tvmvdate"
-        android:textColor="@color/colorBg"
-        android:hint="Release Date"
-        android:layout_above="@+id/tvmvinfo"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="54dp" />
+        android:layout_marginBottom="64dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -63,9 +46,20 @@
         android:textSize="16sp"
         android:textStyle="normal|bold"
         android:hint="Movie Name"
-        android:layout_above="@+id/tvmvdate"
-        android:layout_alignEnd="@+id/floatingActionButton"
-        android:layout_marginBottom="14dp" />
 
+        android:layout_below="@+id/imView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvmvdate"
+        android:textColor="@color/colorBg"
+        android:hint="Release Date"
+        android:layout_above="@+id/tvmvinfo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="48dp" />
 
 </RelativeLayout>
+</ScrollView>
