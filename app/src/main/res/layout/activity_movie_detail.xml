@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -22,20 +20,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imView"
+        android:paddingLeft="74dp"
+        android:layout_marginTop="8dp"
         android:layout_alignParentTop="true"
-        android:adjustViewBounds="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="8dp" />
-
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tvmvinfo"
-        android:textColor="@color/colorBg"
-        android:textAlignment="center"
-        android:layout_marginBottom="64dp"
-        android:layout_alignParentBottom="true"
+        android:layout_centerVertical="true"
         android:layout_alignParentStart="true" />
 
     <TextView
@@ -46,20 +34,33 @@
         android:textSize="16sp"
         android:textStyle="normal|bold"
         android:hint="Movie Name"
+        android:textAlignment="center"
+        android:layout_centerVertical="true"
 
-        android:layout_below="@+id/imView"
+        android:layout_above="@+id/tvmvdate"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp" />
+        android:layout_marginBottom="18dp" />
+
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/tvmvinfo"
+        android:textColor="@color/colorBg"
+        android:textAlignment="center"
+        android:layout_marginBottom="24dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
         android:id="@+id/tvmvdate"
         android:textColor="@color/colorBg"
         android:hint="Release Date"
+        android:layout_marginBottom="14dp"
         android:layout_above="@+id/tvmvinfo"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="48dp" />
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
-</ScrollView>
