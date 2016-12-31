@@ -37,11 +37,10 @@ public class MainActivity extends AppCompatActivity {
 
         setupToolbar();
 
-        DataModel[] drawerItem = new DataModel[3];
+        DataModel[] drawerItem = new DataModel[2];
 
         drawerItem[0] = new DataModel(R.drawable.connect, "MOVIES");
-        drawerItem[1] = new DataModel(R.drawable.fixtures, "THEATRES");
-        drawerItem[2] = new DataModel(R.drawable.table, "TRAILERS");
+        drawerItem[1] = new DataModel(R.drawable.table, "TRAILERS");
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         getSupportActionBar().setHomeButtonEnabled(true);
 
@@ -79,10 +78,8 @@ public class MainActivity extends AppCompatActivity {
             case 0:
                 fragment = new MovieFragment();
                 break;
+
             case 1:
-                fragment = new TheatreFragment();
-                break;
-            case 2:
                 fragment = new TrailerFragment();
                 break;
 

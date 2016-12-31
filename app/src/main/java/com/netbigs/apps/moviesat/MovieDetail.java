@@ -18,18 +18,20 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.DataOutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 public class MovieDetail extends Activity {
 
-    public static final String showUrl = "http://netbigs.com/apps/fetch.php";
-    String myJSON;
+    public static final String showUrl = "http://netbigs.com/apps/fetchdetail.php";
+    String myJSON,s;
     String mvname;
     String mvinfo;
     String rdate,imglink;
@@ -53,7 +55,7 @@ public class MovieDetail extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_detail);
-
+        String s= getIntent().getStringExtra("MovieName");
 
         getData();
 
@@ -72,7 +74,6 @@ public class MovieDetail extends Activity {
                 mvname = c.getString(TAG_NAME);
 
                 imglink = c.getString(TAG_IMG);
-                System.out.println(imglink);
                 rdate = c.getString(TAG_DATE);
                 mvinfo = c.getString(TAG_MOVINF);
              try {
@@ -113,9 +114,23 @@ catch (Exception e){
         @Override
             protected String doInBackground(String... params) {
             try {
-                    String uri = showUrl;
+                String urlParameters  = s;
+                byte[] postData       = urlParameters.getBytes( StandardCharsets.UTF_8 );
+                int    postDataLength = postData.length;
+
+                String uri = showUrl;
                        URL url = new URL(uri);
                 HttpURLConnection con = (HttpURLConnection) url.openConnection();
+                con.setDoOutput(true);
+                con.setInstanceFollowRedirects(false);
+                con.setRequestMethod("POST");
+                con.setRequestProperty("Content-Type","application/x-www-form-urlencoded");
+                con.setRequestProperty("charset","utf-8");
+                con.setRequestProperty("Content-Length",Integer.toString(postDataLength));
+                con.setUseCaches( false );
+                try( DataOutputStream wr = new DataOutputStream( con.getOutputStream())) {
+                    wr.write( postData );
+                }
                 InputStream inputStream = null;
                 String result = null;
                 inputStream = con.getInputStream();

@@ -3,8 +3,8 @@
     <string name="title_activity_area_main">AreaMain</string>
 
     <string name="title_section1">MOVIES</string>
-    <string name="title_section2">THEATRES</string>
-    <string name="title_section3">TRAILERS</string>
+
+    <string name="title_section2">TRAILERS</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -20,7 +20,6 @@
 
     <string-array name="navigation_drawer_items_array">
         <item>MOVIES</item>
-        <item>THEATRES</item>
         <item>TRAILERS</item>
     </string-array>
 

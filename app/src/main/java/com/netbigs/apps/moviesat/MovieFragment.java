@@ -94,6 +94,7 @@ public class MovieFragment extends Fragment {
                         break;
                     case 1:
                         i = new Intent(MovieFragment.this.getActivity(),MovieDetail.class);
+                        i.putExtra("MovieName",mvname);
                         startActivity(i);
                         break;
                     case 2:
@@ -135,7 +136,6 @@ public class MovieFragment extends Fragment {
                 rdate = c.getString(TAG_DATE);
                 mvinfo = c.getString(TAG_MOVINF);
                 try {
-
                 GridItem item;
                     item = new GridItem();
                     item.setDrawableId(imglink);
@@ -176,6 +176,7 @@ public class MovieFragment extends Fragment {
                     BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"), 8);
                     StringBuilder sb = new StringBuilder();
                     String line = null;
+
                     while ((line = reader.readLine()) != null)
                     {
                         sb.append(line + "\n");
@@ -194,6 +195,7 @@ public class MovieFragment extends Fragment {
                 showList();
 
                     mGridAdapter.setGridData(movie);
+
             }
 
         }
