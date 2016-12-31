@@ -1,13 +1,29 @@
 package com.netbigs.apps.moviesat;
 
+import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,67 +31,71 @@ import java.util.List;
  * Created by neerajathamkavil on 22/12/16.
  */
 
-public final class GridAdapter extends BaseAdapter {
+public class GridAdapter extends ArrayAdapter<GridItem> {
 
-    private final List<Item> mItems = new ArrayList<Item>();
-    private final LayoutInflater mInflater;
 
-    public GridAdapter(Context context) {
-        mInflater = LayoutInflater.from(context);
 
-        mItems.add(new Item("Pulimurugan",       R.drawable.puli));
-        mItems.add(new Item("Dangal", R.drawable.dang));
-        mItems.add(new Item("Kattappanayile Rithwik Roshan",   R.drawable.katta));
-        mItems.add(new Item("Ore Mukham",      R.drawable.ore));
-        mItems.add(new Item("Moana",     R.drawable.mo));
-        mItems.add(new Item("Dear Zindagi",      R.drawable.zin));
+    private Context mContext;
+    private int layoutResourceId;
+
+    private ArrayList<GridItem> mGridData = new ArrayList<GridItem>();
+
+
+
+
+
+
+
+    public GridAdapter(Context mContext,int layoutResourceId,ArrayList<GridItem>mGridData) {
+        super(mContext,layoutResourceId,mGridData);
+        this.layoutResourceId=layoutResourceId;
+        this.mContext=mContext;
+        this.mGridData=mGridData;
+
     }
 
-    @Override
-    public int getCount() {
-        return mItems.size();
+    public void setGridData(ArrayList<GridItem> mGridData) {
+        this.mGridData = mGridData;
+        notifyDataSetChanged();
     }
 
-    @Override
-    public Item getItem(int i) {
-        return mItems.get(i);
-    }
-
-    @Override
-    public long getItemId(int i) {
-        return mItems.get(i).drawableId;
-    }
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         View v = view;
-        ImageView picture;
-        TextView name;
+        ViewHolder holder;
+
+
 
         if (v == null) {
-            v = mInflater.inflate(R.layout.grid_item, viewGroup, false);
-            v.setTag(R.id.picture, v.findViewById(R.id.picture));
-            v.setTag(R.id.text, v.findViewById(R.id.text));
+
+            LayoutInflater inflater = ((Activity) mContext).getLayoutInflater();
+            v = inflater.inflate(layoutResourceId, viewGroup, false);
+            holder = new ViewHolder();
+            holder.titleTextView = (TextView) v.findViewById(R.id.text);
+            holder.imageView = (ImageView) v.findViewById(R.id.picture);
+            v.setTag(holder);
+        }else {
+            holder = (ViewHolder) v.getTag();
         }
 
-        picture = (ImageView) v.getTag(R.id.picture);
-        name = (TextView) v.getTag(R.id.text);
 
-        Item item = getItem(i);
+        GridItem item = mGridData.get(i);
 
-        picture.setImageResource(item.drawableId);
-        name.setText(item.name);
+        holder.titleTextView.setText(item.getName());
+        System.out.println(item.getName());
+        Picasso.with(mContext).load(item.getDrawableId()).into(holder.imageView);
+
+
+        System.out.println(item.getName());
 
         return v;
     }
 
-    private static class Item {
-        public final String name;
-        public final int drawableId;
-
-        Item(String name, int drawableId) {
-            this.name = name;
-            this.drawableId = drawableId;
-        }
+    static class ViewHolder {
+        TextView titleTextView;
+        ImageView imageView;
     }
+
+
 }
