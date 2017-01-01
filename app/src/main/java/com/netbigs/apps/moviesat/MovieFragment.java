@@ -35,7 +35,7 @@ import java.util.List;
  */
 public class MovieFragment extends Fragment {
 
-    public static final String showUrl = "http://netbigs.com/apps/fetch.php";
+    public static final String showUr = "http://netbigs.com/apps/fetch.php";
     String myJSON;
     public String mvname;
     String mvinfo;
@@ -167,7 +167,7 @@ public class MovieFragment extends Fragment {
             @Override
             protected String doInBackground(String... params) {
                 try {
-                    String uri = showUrl;
+                    String uri = showUr;
                     URL url = new URL(uri);
                     HttpURLConnection con = (HttpURLConnection) url.openConnection();
                     InputStream inputStream = null;
