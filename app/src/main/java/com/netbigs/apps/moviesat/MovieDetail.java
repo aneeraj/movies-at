@@ -1,11 +1,13 @@
 package com.netbigs.apps.moviesat;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.widget.EditText;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -21,6 +23,7 @@ import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.Serializable;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
@@ -28,135 +31,35 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
-public class MovieDetail extends Activity {
+public class MovieDetail extends Activity implements Serializable {
 
-    public static final String showUrl = "http://netbigs.com/apps/fetchdetail.php";
-    String myJSON,s;
-    String mvname;
-    String mvinfo;
-    String rdate,imglink;
+    int position;
+
     ImageView imageView;
-    Bitmap myBitmap;
-    URL urii;
 
-    private static final String TAG_RESULTS = "result";
-    private static final String TAG_ID = "mvid";
-    private static final String TAG_NAME = "mvname";
-    private static final String TAG_IMG = "imglink";
-    private static final String TAG_DATE = "rdate";
-    private static final String TAG_MOVINF = "mvinfo";
+    private ArrayList<GridItem> moviedata = new ArrayList<>();
 
-    JSONArray movies = null;
 
-    ArrayList<HashMap<String,String>> movieList = new ArrayList<>();
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_detail);
-        String s= getIntent().getStringExtra("MovieName");
+        Intent i=getIntent();
+        position = i.getExtras().getInt("id");
+        moviedata= i.getParcelableArrayListExtra("array");
+        System.out.println(position);
+        imageView = (ImageView)findViewById(R.id.imView);
 
-        getData();
-
+        Picasso.with(this).load(moviedata.get(position).getDrawableId()).into(imageView);
+        TextView tvname = (TextView)findViewById(R.id.tvmvname);
+        TextView tvdate = (TextView)findViewById(R.id.tvmvdate);
+        TextView tvinfo = (TextView)findViewById(R.id.tvmvinfo);
+        tvname.setText(moviedata.get(position).getName());
+        tvdate.setText(moviedata.get(position).getRdate());
+        tvinfo.setText(moviedata.get(position).getMinfo());
     }
-
-    protected void showList(){
-
-
-        try{
-            JSONObject jsonObj = new JSONObject(myJSON);
-            movies = jsonObj.getJSONArray(TAG_RESULTS);
-
-            for (int i=0;i<movies.length();i++){
-                JSONObject c = movies.getJSONObject(i);
-                String mvid = c.getString(TAG_ID);
-                mvname = c.getString(TAG_NAME);
-
-                imglink = c.getString(TAG_IMG);
-                rdate = c.getString(TAG_DATE);
-                mvinfo = c.getString(TAG_MOVINF);
-             try {
-                 urii = new URL(imglink);
-                 HttpURLConnection connection = (HttpURLConnection) urii.openConnection();
-                 connection.setDoInput(true);
-                 connection.connect();
-                 InputStream in = connection.getInputStream();
-                 myBitmap = BitmapFactory.decodeStream(in);
-
-
-             }
-catch (Exception e){
-    e.printStackTrace();
-}
-            }
-            imageView = (ImageView)findViewById(R.id.imView);
-            Picasso.with(this).load(imglink).into(imageView);
-            TextView tvname = (TextView)findViewById(R.id.tvmvname);
-            TextView tvdate = (TextView)findViewById(R.id.tvmvdate);
-            TextView tvinfo = (TextView)findViewById(R.id.tvmvinfo);
-            tvname.setText(mvname);
-            tvdate.setText(rdate);
-            tvinfo.setText(mvinfo);
-
-
-        }
-        catch (JSONException e){
-            e.printStackTrace();
-        }
-
-
-
-    }
-    public void getData(){
-       class GetDataJSON extends AsyncTask<String, Void, String> {
-
-        @Override
-            protected String doInBackground(String... params) {
-            try {
-                String urlParameters  = s;
-                byte[] postData       = urlParameters.getBytes( StandardCharsets.UTF_8 );
-                int    postDataLength = postData.length;
-
-                String uri = showUrl;
-                       URL url = new URL(uri);
-                HttpURLConnection con = (HttpURLConnection) url.openConnection();
-                con.setDoOutput(true);
-                con.setInstanceFollowRedirects(false);
-                con.setRequestMethod("POST");
-                con.setRequestProperty("Content-Type","application/x-www-form-urlencoded");
-                con.setRequestProperty("charset","utf-8");
-                con.setRequestProperty("Content-Length",Integer.toString(postDataLength));
-                con.setUseCaches( false );
-                try( DataOutputStream wr = new DataOutputStream( con.getOutputStream())) {
-                    wr.write( postData );
-                }
-                InputStream inputStream = null;
-                String result = null;
-                inputStream = con.getInputStream();
-                BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"), 8);
-                StringBuilder sb = new StringBuilder();
-                String line = null;
-                while ((line = reader.readLine()) != null)
-                {
-                 sb.append(line + "\n");
-                }
-                return sb.toString();
-            } catch (Exception e) {
-                return null;
-
-            }
-        }
-
-           @Override
-            protected void onPostExecute(String result){
-                myJSON=result;
-                showList();
-                }
-            }
-        GetDataJSON g = new GetDataJSON();
-        g.execute();
-        }
 
 
 }

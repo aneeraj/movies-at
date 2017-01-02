@@ -38,11 +38,7 @@ public class GridAdapter extends ArrayAdapter<GridItem> {
     private Context mContext;
     private int layoutResourceId;
 
-    private ArrayList<GridItem> mGridData = new ArrayList<GridItem>();
-
-
-
-
+    public ArrayList<GridItem> mGridData = new ArrayList<GridItem>();
 
 
 

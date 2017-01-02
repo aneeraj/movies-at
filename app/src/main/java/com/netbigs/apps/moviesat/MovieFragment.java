@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.graphics.Movie;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -24,6 +26,7 @@ import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.Serializable;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
@@ -33,16 +36,17 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MovieFragment extends Fragment {
+public class MovieFragment extends Fragment implements Parcelable{
 
     public static final String showUr = "http://netbigs.com/apps/fetch.php";
+    private static final String STATE_MOVIE ="state movies" ;
     String myJSON;
     public String mvname;
     String mvinfo;
     private GridView mGridView;
     public String rdate,imglink;
     private ProgressBar mProgressBar;
-
+    GridItem item;
     private ArrayList<GridItem> movie = new ArrayList<>();
     private GridAdapter mGridAdapter;
     private static final String TAG_RESULTS = "result";
@@ -71,10 +75,17 @@ public class MovieFragment extends Fragment {
     }
 
     @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelableArrayList(STATE_MOVIE,movie);
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_movie, container, false);
+
         mGridView = (GridView) view.findViewById(R.id.gridview);
 
         mGridAdapter = new GridAdapter(getContext(),R.layout.grid_item,movie);
@@ -85,35 +96,26 @@ public class MovieFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent i;
-                switch (position){
-
-                    case 0:
 
                         i = new Intent(MovieFragment.this.getActivity(),MovieDetail.class);
-                        startActivity(i);
-                        break;
-                    case 1:
-                        i = new Intent(MovieFragment.this.getActivity(),MovieDetail.class);
-                        i.putExtra("MovieName",mvname);
-                        startActivity(i);
-                        break;
-                    case 2:
-                        i = new Intent(MovieFragment.this.getActivity(),MovieDetail.class);
-                        startActivity(i);
-                        break;
-                    case 3:
-                        i = new Intent(MovieFragment.this.getActivity(),MovieDetail.class);
-                        startActivity(i);
-                        break;
 
+                        i.putParcelableArrayListExtra("array",movie);
+                        i.putExtra("id",position);
 
+                        startActivity(i);
 
-                }
 
 
             }
         });
-        getData();
+
+        if(savedInstanceState!=null){
+            movie = savedInstanceState.getParcelableArrayList(STATE_MOVIE);
+            mGridAdapter.setGridData(movie);
+        }
+        else{
+            getData();
+        }
         return view;
 
 
@@ -136,11 +138,12 @@ public class MovieFragment extends Fragment {
                 rdate = c.getString(TAG_DATE);
                 mvinfo = c.getString(TAG_MOVINF);
                 try {
-                GridItem item;
+
                     item = new GridItem();
                     item.setDrawableId(imglink);
                     item.setName(mvname);
-
+                    item.setRdate(rdate);
+                    item.setMinfo(mvinfo);
                     movie.add(item);
 
                 }
@@ -205,7 +208,32 @@ public class MovieFragment extends Fragment {
 
     }
 
+    public void writeToParcel(Parcel out, int flags) {
 
+        out.writeTypedList(movie);  // help here
+    }
+
+
+    private MovieFragment(Parcel in) {
+     
+        in.readTypedList(movie,GridItem.CREATOR);  // help here
+    }
+
+    @Override
+    public int describeContents() {
+        return this.hashCode();
+    }
+
+    public static final Parcelable.Creator<MovieFragment> CREATOR =
+            new Parcelable.Creator<MovieFragment>() {
+                public MovieFragment createFromParcel(Parcel in) {
+                    return new MovieFragment(in);
+                }
+
+                public MovieFragment[] newArray(int size) {
+                    return new MovieFragment[size];
+                }
+            };
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
