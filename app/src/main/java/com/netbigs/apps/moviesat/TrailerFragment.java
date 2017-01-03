@@ -3,6 +3,7 @@ package com.netbigs.apps.moviesat;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -76,7 +77,12 @@ public class TrailerFragment extends Fragment {
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getContext(),"You Clicked ",Toast.LENGTH_SHORT).show();
+                Intent i;
+
+                i = new Intent(TrailerFragment.this.getActivity(),VideoActivity.class);
+                i.putExtra("video",imageid.get(position).getVideo());
+                System.out.println(imageid.get(position).getVideo());
+                startActivity(i);
             }
         });
 
@@ -107,7 +113,7 @@ public class TrailerFragment extends Fragment {
                     item = new ListItem();
                     item.setDrawableId(imagetrailer);
                     item.setName(trailername);
-
+                    item.setVideo(trailervideo);
                     imageid.add(item);
 
                 }

@@ -3,7 +3,15 @@ package com.netbigs.apps.moviesat;
 public class ListItem {
     private String trailername;
     private String imagetrailer;
+    private String video;
 
+    public String getVideo() {
+        return video;
+    }
+
+    public void setVideo(String video) {
+        this.video = video;
+    }
 
     public ListItem() {
         super();
