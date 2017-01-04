@@ -80,6 +80,7 @@ public class GridAdapter extends ArrayAdapter<GridItem> {
 
         holder.titleTextView.setText(item.getName());
         System.out.println(item.getName());
+
         Picasso.with(mContext).load(item.getDrawableId()).into(holder.imageView);
 
 

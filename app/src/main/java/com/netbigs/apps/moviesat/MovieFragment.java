@@ -45,10 +45,11 @@ public class MovieFragment extends Fragment implements Parcelable{
     String mvinfo;
     private GridView mGridView;
     public String rdate,imglink;
-    private ProgressBar mProgressBar;
+    private ProgressBar progressBar;
     GridItem item;
     private ArrayList<GridItem> movie = new ArrayList<>();
     private GridAdapter mGridAdapter;
+
     private static final String TAG_RESULTS = "result";
     private static final String TAG_ID = "mvid";
     private static final String TAG_NAME = "mvname";
@@ -85,12 +86,13 @@ public class MovieFragment extends Fragment implements Parcelable{
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_movie, container, false);
-
+         progressBar = (ProgressBar) view.findViewById(R.id.progressBar);
         mGridView = (GridView) view.findViewById(R.id.gridview);
 
         mGridAdapter = new GridAdapter(getContext(),R.layout.grid_item,movie);
-        mGridView.setAdapter(mGridAdapter);
+        progressBar.setVisibility(View.GONE);
 
+        mGridView.setAdapter(mGridAdapter);
 
         mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -184,6 +186,7 @@ public class MovieFragment extends Fragment implements Parcelable{
                     {
                         sb.append(line + "\n");
                     }
+
                     return sb.toString();
                 } catch (Exception e) {
                     return null;
