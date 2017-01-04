@@ -15,7 +15,7 @@ public class splash extends Activity {
             public void run(){
                 try{
                     sleep(5000);
-                    Intent i = new Intent(splash.this,login.class);
+                    Intent i = new Intent(splash.this,MainActivity.class);
                     startActivity(i);
                     finish();
                 }
