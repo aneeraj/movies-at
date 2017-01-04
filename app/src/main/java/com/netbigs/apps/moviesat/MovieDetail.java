@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,7 +42,7 @@ public class MovieDetail extends Activity implements Serializable {
     TheatreList item;
     private ArrayList<TheatreList> theatres = new ArrayList<>();
     private ListCustomAdapter listCustomAdapter;
-    private NonScrollListView mListView;
+    private ListView mListView;
     private static final String TAG_RESULTS="result";
     private static final String TAG_THNAME="theatr";
     private static final String TAG_SHOW="shows";
@@ -54,18 +55,22 @@ public class MovieDetail extends Activity implements Serializable {
         Intent i=getIntent();
         position = i.getExtras().getInt("id");
         moviedata= i.getParcelableArrayListExtra("array");
+        LayoutInflater myinflater = getLayoutInflater();
+        ViewGroup myHeader = (ViewGroup)myinflater.inflate(R.layout.listheader, mListView, false);
+        imageView = (ImageView)myHeader.findViewById(R.id.imView);
+        TextView tvname = (TextView)myHeader.findViewById(R.id.tvmvname);
+        TextView tvdate = (TextView)myHeader.findViewById(R.id.tvmvdate);
+        TextView tvinfo = (TextView)myHeader.findViewById(R.id.tvmvinfo);
 
-
-        mListView = (NonScrollListView) findViewById(R.id.theatrelist);
+        mListView = (ListView) findViewById(R.id.theatrelist);
         listCustomAdapter = new ListCustomAdapter(this,R.layout.theatre_list,theatres);
+        mListView.addHeaderView(myHeader,null,false);
+
         mListView.setAdapter(listCustomAdapter);
 
-        imageView = (ImageView)findViewById(R.id.imView);
 
         Picasso.with(this).load(moviedata.get(position).getDrawableId()).into(imageView);
-        TextView tvname = (TextView)findViewById(R.id.tvmvname);
-        TextView tvdate = (TextView)findViewById(R.id.tvmvdate);
-        TextView tvinfo = (TextView)findViewById(R.id.tvmvinfo);
+
         tvname.setText(moviedata.get(position).getName());
         tvdate.setText(moviedata.get(position).getRdate());
         tvinfo.setText(moviedata.get(position).getMinfo());
@@ -75,12 +80,7 @@ public class MovieDetail extends Activity implements Serializable {
 
     }
 
-    @Override
-    public boolean dispatchTouchEvent(MotionEvent ev) {
-         if(ev.getAction()==MotionEvent.ACTION_MOVE)
-             return true;
-        return super.dispatchTouchEvent(ev);
-    }
+
 
     protected void showList(){
 

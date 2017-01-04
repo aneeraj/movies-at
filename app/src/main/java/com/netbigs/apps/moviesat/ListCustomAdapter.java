@@ -58,7 +58,8 @@ public class ListCustomAdapter extends ArrayAdapter<TheatreList>{
         }
 
 
-        TheatreList item = showtimes.get(i);
+
+    TheatreList item = showtimes.get(i);
 
         holder.theatreTextView.setText(item.getTheatrename());
 
