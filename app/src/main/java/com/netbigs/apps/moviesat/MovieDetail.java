@@ -5,6 +5,9 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.*;
 
 import com.squareup.picasso.Picasso;
@@ -38,7 +41,7 @@ public class MovieDetail extends Activity implements Serializable {
     TheatreList item;
     private ArrayList<TheatreList> theatres = new ArrayList<>();
     private ListCustomAdapter listCustomAdapter;
-    private ListView mListView;
+    private NonScrollListView mListView;
     private static final String TAG_RESULTS="result";
     private static final String TAG_THNAME="theatr";
     private static final String TAG_SHOW="shows";
@@ -52,7 +55,8 @@ public class MovieDetail extends Activity implements Serializable {
         position = i.getExtras().getInt("id");
         moviedata= i.getParcelableArrayListExtra("array");
 
-        mListView = (ListView) findViewById(R.id.theatrelist);
+
+        mListView = (NonScrollListView) findViewById(R.id.theatrelist);
         listCustomAdapter = new ListCustomAdapter(this,R.layout.theatre_list,theatres);
         mListView.setAdapter(listCustomAdapter);
 
@@ -68,6 +72,14 @@ public class MovieDetail extends Activity implements Serializable {
         paramValue=moviedata.get(position).getName();
         getData();
 
+
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+         if(ev.getAction()==MotionEvent.ACTION_MOVE)
+             return true;
+        return super.dispatchTouchEvent(ev);
     }
 
     protected void showList(){
