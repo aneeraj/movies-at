@@ -13,9 +13,6 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-/**
- * Created by neerajathamkavil on 2/1/17.
- */
 
 public class ListCustomAdapter extends ArrayAdapter<TheatreList>{
 

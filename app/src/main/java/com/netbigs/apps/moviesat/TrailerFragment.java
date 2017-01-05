@@ -30,9 +30,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-/**
- * A simple {@link Fragment} subclass.
- */
+
 public class TrailerFragment extends Fragment {
 
     private ListView listview;

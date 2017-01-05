@@ -13,9 +13,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by neerajathamkavil on 1/1/17.
- */
+
 
 public class traileradapter extends ArrayAdapter<ListItem> {
 

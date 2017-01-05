@@ -43,7 +43,8 @@ public class splash extends AppCompatActivity {
         snackbar.setAction(R.string.try_again, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               snackbar.dismiss(); //recheck internet connection and call DownloadJson if there is internet
+
+                snackbar.dismiss(); //recheck internet connection and call DownloadJson if there is internet
             }
         }).show();
     }

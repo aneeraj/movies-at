@@ -9,9 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-/**
- * Created by neerajathamkavil on 22/12/16.
- */
+
 
 public class DrawerItemCustomAdapter extends ArrayAdapter<DataModel> {
 

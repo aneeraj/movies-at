@@ -27,9 +27,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by neerajathamkavil on 22/12/16.
- */
 
 public class GridAdapter extends ArrayAdapter<GridItem> {
 
@@ -79,12 +76,10 @@ public class GridAdapter extends ArrayAdapter<GridItem> {
         GridItem item = mGridData.get(i);
 
         holder.titleTextView.setText(item.getName());
-        System.out.println(item.getName());
 
         Picasso.with(mContext).load(item.getDrawableId()).into(holder.imageView);
 
 
-        System.out.println(item.getName());
 
         return v;
     }

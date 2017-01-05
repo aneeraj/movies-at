@@ -11,11 +11,13 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -49,7 +51,6 @@ public class MovieFragment extends Fragment implements Parcelable{
     GridItem item;
     private ArrayList<GridItem> movie = new ArrayList<>();
     private GridAdapter mGridAdapter;
-
     private static final String TAG_RESULTS = "result";
     private static final String TAG_ID = "mvid";
     private static final String TAG_NAME = "mvname";
@@ -57,7 +58,6 @@ public class MovieFragment extends Fragment implements Parcelable{
     private static final String TAG_DATE = "rdate";
     private static final String TAG_MOVINF = "mvinfo";
     JSONArray movies = null;
-    Bundle args = new Bundle();
 
     public MovieFragment() {
         // Required empty public constructor
@@ -91,13 +91,11 @@ public class MovieFragment extends Fragment implements Parcelable{
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_movie, container, false);
          progressBar = (ProgressBar) view.findViewById(R.id.progressBar);
         mGridView = (GridView) view.findViewById(R.id.gridview);
 
         mGridAdapter = new GridAdapter(getContext(),R.layout.grid_item,movie);
-        progressBar.setVisibility(View.GONE);
 
         mGridView.setAdapter(mGridAdapter);
         mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -124,6 +122,9 @@ public class MovieFragment extends Fragment implements Parcelable{
         else{
             getData();
         }
+
+
+
         return view;
 
 
@@ -201,13 +202,21 @@ public class MovieFragment extends Fragment implements Parcelable{
 
 
             }
+
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                progressBar.setVisibility(View.VISIBLE);
+
+            }
+
             @Override
             protected void onPostExecute(String result){
                 myJSON=result;
                 showList();
 
                     mGridAdapter.setGridData(movie);
-
+                    progressBar.setVisibility(View.GONE);
             }
 
         }
@@ -219,13 +228,13 @@ public class MovieFragment extends Fragment implements Parcelable{
 
     public void writeToParcel(Parcel out, int flags) {
 
-        out.writeTypedList(movie);  // help here
+        out.writeTypedList(movie);
     }
 
 
     private void readFromParcel(Parcel in) {
      
-        in.readTypedList(movie,GridItem.CREATOR);  // help here
+        in.readTypedList(movie,GridItem.CREATOR);
     }
 
     @Override

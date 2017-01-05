@@ -1,8 +1,6 @@
 package com.netbigs.apps.moviesat;
 
-/**
- * Created by neerajathamkavil on 2/1/17.
- */
+
 
 public class TheatreList {
 
