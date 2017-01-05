@@ -57,9 +57,16 @@ public class MovieFragment extends Fragment implements Parcelable{
     private static final String TAG_DATE = "rdate";
     private static final String TAG_MOVINF = "mvinfo";
     JSONArray movies = null;
+    Bundle args = new Bundle();
 
     public MovieFragment() {
         // Required empty public constructor
+    }
+
+    @SuppressWarnings("ValidFragment")
+    public MovieFragment(Parcel in){
+        this();
+        readFromParcel(in);
     }
 
     @Override
@@ -93,7 +100,6 @@ public class MovieFragment extends Fragment implements Parcelable{
         progressBar.setVisibility(View.GONE);
 
         mGridView.setAdapter(mGridAdapter);
-
         mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -217,7 +223,7 @@ public class MovieFragment extends Fragment implements Parcelable{
     }
 
 
-    private MovieFragment(Parcel in) {
+    private void readFromParcel(Parcel in) {
      
         in.readTypedList(movie,GridItem.CREATOR);  // help here
     }

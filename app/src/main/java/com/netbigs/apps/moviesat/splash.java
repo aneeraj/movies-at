@@ -8,9 +8,10 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-public class splash extends Activity {
+public class splash extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,12 +39,11 @@ public class splash extends Activity {
         final Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content),
                 "No internet connection.",
                 Snackbar.LENGTH_SHORT);
-        snackbar.setActionTextColor(ContextCompat.getColor(getApplicationContext(),
-                R.color.colorBg));
+
         snackbar.setAction(R.string.try_again, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //recheck internet connection and call DownloadJson if there is internet
+               snackbar.dismiss(); //recheck internet connection and call DownloadJson if there is internet
             }
         }).show();
     }

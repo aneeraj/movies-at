@@ -39,8 +39,8 @@ public class MainActivity extends AppCompatActivity {
 
         DataModel[] drawerItem = new DataModel[2];
 
-        drawerItem[0] = new DataModel(R.drawable.ic_movie_white_24dp, "MOVIES");
-        drawerItem[1] = new DataModel(R.drawable.ic_videocam_white_24dp, "TRAILERS");
+        drawerItem[0] = new DataModel(R.drawable.ic_movie_black_24dp, "MOVIES");
+        drawerItem[1] = new DataModel(R.drawable.ic_videocam_black_24dp, "TRAILERS");
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         getSupportActionBar().setHomeButtonEnabled(true);
 
