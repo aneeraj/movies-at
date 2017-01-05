@@ -21,7 +21,7 @@
         android:layout_toRightOf="@+id/imageViewIcon"
         android:paddingRight="10dp"
         android:text="Item Name"
-        android:textColor="@color/colorBg"
+        android:textColor="@color/colorWhite"
         android:textAppearance="?android:attr/textAppearanceListItemSmall"
         />
 
