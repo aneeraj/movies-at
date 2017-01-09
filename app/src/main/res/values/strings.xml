@@ -23,6 +23,6 @@
         <item>MOVIES</item>
         <item>TRAILERS</item>
     </string-array>
-
+    <string name="discl">Dont worry we wont post anything on your behalf.</string>
     <string name="error_player">There was an error initializing the YouTubePlayer (%1$s)</string>
 </resources>

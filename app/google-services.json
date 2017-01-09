@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "801999096492-aovrs071qn5s0hor04ork5o5d3k75ouc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.netbigs.apps.moviesat",
+            "certificate_hash": "5EA7213A74915FD4B1C4CFE94224AF68C970F333"
+          }
+        },
+        {
           "client_id": "801999096492-9sq4ngki976ghbp2f9ngibcvaj9qb5u0.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
