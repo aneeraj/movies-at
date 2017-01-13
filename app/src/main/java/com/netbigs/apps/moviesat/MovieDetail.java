@@ -1,6 +1,7 @@
 package com.netbigs.apps.moviesat;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -27,6 +28,8 @@ import java.io.Serializable;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+
+import static com.netbigs.apps.moviesat.R.layout.ratingdialog;
 
 public class MovieDetail extends Activity implements Serializable {
 
@@ -55,18 +58,50 @@ public class MovieDetail extends Activity implements Serializable {
         Intent i=getIntent();
         position = i.getExtras().getInt("id");
         moviedata= i.getParcelableArrayListExtra("array");
-        LayoutInflater myinflater = getLayoutInflater();
-        ViewGroup myHeader = (ViewGroup)myinflater.inflate(R.layout.listheader, mListView, false);
+        final LayoutInflater myinflater = getLayoutInflater();
+        final ViewGroup myHeader = (ViewGroup)myinflater.inflate(R.layout.listheader, mListView, false);
         imageView = (ImageView)myHeader.findViewById(R.id.imView);
         TextView tvname = (TextView)myHeader.findViewById(R.id.tvmvname);
         TextView tvdate = (TextView)myHeader.findViewById(R.id.tvmvdate);
         TextView tvinfo = (TextView)myHeader.findViewById(R.id.tvmvinfo);
+        TextView rattext = (TextView)myHeader.findViewById(R.id.ratebutt);
+        TextView usertext = (TextView)myHeader.findViewById(R.id.usertextt);
 
         mListView = (ListView) findViewById(R.id.theatrelist);
         listCustomAdapter = new ListCustomAdapter(this,R.layout.theatre_list,theatres);
         mListView.addHeaderView(myHeader,null,false);
 
         mListView.setAdapter(listCustomAdapter);
+        usertext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MovieDetail.this,ReviewActivity.class);
+                startActivity(i);
+            }
+        });
+        rattext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                        final Dialog rankDialog = new Dialog(MovieDetail.this, R.style.FullHeightDialog);
+                        rankDialog.setContentView(ratingdialog);
+                        rankDialog.setCancelable(true);
+                        RatingBar ratingBar = (RatingBar)rankDialog.findViewById(R.id.dialog_ratingbar);
+                        ratingBar.setRating(3);
+
+
+                        Button updateButton = (Button) rankDialog.findViewById(R.id.rank_dialog_button);
+                        updateButton.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                rankDialog.dismiss();
+                            }
+                        });
+                        //now that the dialog is set up, it's time to show it
+                        rankDialog.show();
+                    }
+                });
+
 
 
         Picasso.with(this).load(moviedata.get(position).getDrawableId()).into(imageView);

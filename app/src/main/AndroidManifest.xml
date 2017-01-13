@@ -29,7 +29,8 @@
             android:name=".MovieDetail"
             android:screenOrientation="portrait" />
         <activity android:name=".VideoActivity" />
-        <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".ReviewActivity" android:theme="@style/ReviewTheme"></activity>
     </application>
 
 </manifest>
