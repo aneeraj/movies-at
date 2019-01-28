@@ -1,43 +1,27 @@
 {
   "project_info": {
-    "project_number": "801999096492",
-    "firebase_url": "https://moviesat-42f9a.firebaseio.com",
-    "project_id": "moviesat-42f9a",
-    "storage_bucket": "moviesat-42f9a.appspot.com"
+    "project_number": "418805138335",
+    "firebase_url": "https://movies-at-5411f.firebaseio.com",
+    "project_id": "movies-at-5411f",
+    "storage_bucket": "movies-at-5411f.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:801999096492:android:1dcc3e64ab16ef1d",
+        "mobilesdk_app_id": "1:418805138335:android:eb5f83a57f56c305",
         "android_client_info": {
-          "package_name": "com.netbigs.apps.moviesat"
+          "package_name": "at.ovies.apps.moviesat"
         }
       },
       "oauth_client": [
         {
-          "client_id": "801999096492-aovrs071qn5s0hor04ork5o5d3k75ouc.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.netbigs.apps.moviesat",
-            "certificate_hash": "5EA7213A74915FD4B1C4CFE94224AF68C970F333"
-          }
-        },
-        {
-          "client_id": "801999096492-9sq4ngki976ghbp2f9ngibcvaj9qb5u0.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.netbigs.apps.moviesat",
-            "certificate_hash": "DA39A3EE5E6B4B0D3255BFEF95601890AFD80709"
-          }
-        },
-        {
-          "client_id": "801999096492-7crodos5pvd2tlb8eu21sj2o6s4ted2s.apps.googleusercontent.com",
+          "client_id": "418805138335-45gce73l25q2cq58v6bsc8ubtsutbu11.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyD6Zi9OuyBmp8GTnQRDjMVgD1cbNbXTgeM"
+          "current_key": "AIzaSyA9GIY2mvp3aHTnOIVTDsF3roqecQgNxl4"
         }
       ],
       "services": {
@@ -45,13 +29,8 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 2,
-          "other_platform_oauth_client": [
-            {
-              "client_id": "801999096492-7crodos5pvd2tlb8eu21sj2o6s4ted2s.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "status": 1,
+          "other_platform_oauth_client": []
         },
         "ads_service": {
           "status": 2

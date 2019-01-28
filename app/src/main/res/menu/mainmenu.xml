@@ -2,7 +2,7 @@
 <menu xmlns:android2="http://schemas.android.com/apk/res/android"
     xmlns:android="http://schemas.android.com/apk/res/android">
      <item android:title="Refresh"
-    android:icon="@drawable/ic_my_location_white_24dp"
+    android:icon="@drawable/female24"
     android:id="@+id/action_refresh"
     android:enabled="false"
          />

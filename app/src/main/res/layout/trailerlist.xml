@@ -1,24 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
     android:background="@color/colorWhite"
-    android:layout_height="match_parent">
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
 
-    <com.netbigs.apps.moviesat.SquareTrailerImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    <at.ovies.apps.moviesat.SquareTrailerImageView
         android:id="@+id/imagetrailerview"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
         android:scaleType="fitXY" />
 
     <TextView
         android:id="@+id/textvi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:paddingTop="15dp"
-        android:paddingBottom="15dp"
         android:layout_gravity="bottom"
-        android:textColor="@android:color/white"
-        android:background="#55000000"/>
+        android:background="#55000000"
+        android:paddingLeft="10dp"
+        android:paddingTop="15dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="15dp"
+        android:textColor="@android:color/white" />
 </FrameLayout>

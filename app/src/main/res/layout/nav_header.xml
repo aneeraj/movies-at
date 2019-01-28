@@ -1,37 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="192dp"
-    android:background="@color/colorPrimaryDark"
-    android:padding="16dp"
-    android:gravity="bottom">
+    android:background="@drawable/navhead"
+    android:gravity="bottom"
+    android:orientation="vertical"
+    android:padding="16dp">
 
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Welcome!"
-        android:paddingBottom="10dp"
+        android:text="തൃശ്ശൂര്‍"
+        android:textAlignment="center"
         android:id="@+id/textviewss"
         android:textColor="@android:color/white"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="18dp"
+        android:textSize="28dp"
 
         android:layout_alignParentStart="true"
         />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:paddingRight="10dp"
-        android:text="You are in Thrissur"
-        android:textColor="@android:color/white"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-
-         />
 
 
+</RelativeLayout>
 
-
-</LinearLayout>

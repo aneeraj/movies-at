@@ -2,9 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorWhite"
     android:id="@+id/tra_fragment"
-    tools:context="com.netbigs.apps.moviesat.TrailerFragment">
+    tools:context="at.ovies.apps.moviesat.TrailerFragment">
 
     <ListView
         android:id="@+id/trailer_list"

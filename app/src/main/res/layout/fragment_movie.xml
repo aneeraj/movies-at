@@ -4,11 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorWhite"
     android:id="@+id/mov_fragment"
-    tools:context="com.netbigs.apps.moviesat.MovieFragment">
+    android:adjustViewBounds="true"
+    android:fitsSystemWindows="false"
+    android:tag="uni"
 
-    <!-- TODO: Update blank fragment layout -->
+    android:theme="@style/AppsTheme"
+    tools:context="at.ovies.apps.moviesat.MovieFragment">
 
 
     <ProgressBar
@@ -24,6 +26,7 @@
         <GridView
             android:id="@+id/gridview"
             android:scrollbars="none"
+            android:fitsSystemWindows="false"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:verticalSpacing="0dp"

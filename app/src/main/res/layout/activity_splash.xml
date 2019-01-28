@@ -5,8 +5,8 @@
 
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/splash"
-    tools:context="com.netbigs.apps.moviesat.splash">
+    android:background="@drawable/nsplash"
+    tools:context="at.ovies.apps.moviesat.splash">
 
 
 </RelativeLayout>

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MoviesAt</string>
+    <string name="app_name">Movies At</string>
     <string name="title_activity_area_main">AreaMain</string>
 
     <string name="title_section1">MOVIES</string>
@@ -25,4 +25,25 @@
     </string-array>
     <string name="discl">Dont worry we wont post anything on your behalf.</string>
     <string name="error_player">There was an error initializing the YouTubePlayer (%1$s)</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+
+
+    <string-array name="location_item">
+        <item>Alappuzha</item>
+        <item>Ernakulam</item>
+        <item>Idukki</item>
+        <item>Kannur</item>
+        <item>Kasaragod</item>
+        <item>Kollam</item>
+        <item>Kottayam</item>
+        <item>Kozhikode</item>
+        <item>Malappuram</item>
+        <item>Palakkad</item>
+        <item>Pathanamthitta</item>
+        <item>Thiruvananthapuram</item>
+        <item>Thrissur</item>
+        <item>Wayanad</item>
+    </string-array>
+
 </resources>
