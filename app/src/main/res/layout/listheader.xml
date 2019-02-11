@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_movie_detail"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:background="#eeeeee"
+    android:background="#ffffff"
     android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="at.ovies.apps.moviesat.MovieDetail">
@@ -29,109 +30,32 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:layout_gravity="left"
-        android:layout_marginBottom="18dp"
         android:layout_marginLeft="10dp"
+        android:layout_marginBottom="18dp"
         android:hint="Movie Name"
         android:paddingTop="10dp"
-        android:textColor="@color/black"
+        android:textAlignment="textStart"
+        android:textColor="@color/black_alpha_40"
         android:textSize="25sp"
-        android:textStyle="normal|bold" />
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/tvmvdate"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_height="3dp"
+        android:layout_gravity="left"
         android:layout_marginBottom="14dp"
         android:hint="Release Date"
-        android:textAlignment="center"
         android:textColor="@color/black" />
 
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="10dp">
-
-        <TextView
-            android:id="@+id/tvText2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-
-            android:layout_gravity="center"
-            android:text=" INFO "
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="13sp"
-            android:textStyle="normal|bold" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="16dp"
-            android:layout_toLeftOf="@id/tvText2"
-            android:background="#d81b60" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="16dp"
-            android:layout_toRightOf="@id/tvText2"
-            android:background="#d81b60" />
-
-
-    </RelativeLayout>
 
     <TextView
         android:id="@+id/tvmvinfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center"
-        android:textAlignment="center"
+        android:padding="10dp"
+        android:layout_alignParentBottom="false"
+        android:layout_centerHorizontal="false"
         android:textColor="@color/black" />
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="10dp">
-
-        <TextView
-            android:id="@+id/tvText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-
-            android:layout_gravity="center"
-            android:text=" SHOW TIME "
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="13sp"
-            android:textStyle="normal|bold" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="16dp"
-            android:layout_toLeftOf="@id/tvText"
-            android:background="#d81b60" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="16dp"
-            android:layout_toRightOf="@id/tvText"
-            android:background="#d81b60" />
-
-
-    </RelativeLayout>
 
 </LinearLayout>

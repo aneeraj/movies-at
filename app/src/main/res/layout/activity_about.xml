@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    tools:context=".AboutActivity">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:gravity="center_vertical">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/img"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/tlogo" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="Movies At shows the movies currently running in theatres at Thrissur, Kerala.
+The app shows the latest movies running at theatres with their trailers, show time and movie information."
+        android:id="@+id/desc"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:textColor="@color/colorWhite"
+        android:textSize="12sp"
+        android:layout_below="@+id/img"
+        android:textAlignment="center"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" Version 3.2"
+        android:id="@+id/ver"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:textColor="@color/colorWhite"
+        android:textSize="12sp"
+        android:layout_below="@+id/desc"
+        android:textAlignment="center"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="www.m.ovies.at"
+        android:id="@+id/rights"
+        android:autoLink="web"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:textColorHighlight="@color/black"
+        android:textColor="@color/colorWhite"
+        android:textColorLink="@color/colorWhite"
+        android:textSize="12sp"
+        android:layout_below="@+id/ver"
+        android:textAlignment="center"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Copyright © 2018"
+        android:id="@+id/copy"
+        android:textSize="12sp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:textColor="@color/colorWhite"
+        android:layout_below="@+id/rights"
+        android:textAlignment="center"/>
+</RelativeLayout>
+</android.support.constraint.ConstraintLayout>
